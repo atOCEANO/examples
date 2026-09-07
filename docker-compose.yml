@@ -1,0 +1,36 @@
+# The router's own compose declares this project too, so both share
+# oceano_default and a router started from that repo resolves here by name.
+name: oceano
+
+services:
+  exchange-router-service:
+    # BuildKit cannot fetch a git context over https on every machine, and
+    # fails claiming a public repo needs credentials, so this is a checkout
+    # beside this one rather than a URL.
+    build:
+      context: ../exchange-router-service
+    container_name: exchange-router-service
+    ports:
+      - "127.0.0.1:${EXCHANGE_ROUTER_SERVICE_PORT:-8040}:8040"
+    healthcheck:
+      test: curl -f http://localhost:8040/status
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+
+  notebooks:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: oceano-notebooks
+    depends_on:
+      exchange-router-service:
+        condition: service_healthy
+    environment:
+      ROUTER_URL: http://exchange-router-service:8040
+    ports:
+      - "127.0.0.1:8888:8888"
+    volumes:
+      - .:/work

@@ -1,0 +1,10 @@
+*.ipynb
+.ipynb_checkpoints/
+
+.git/
+.gitattributes
+.gitignore
+__pycache__/
+LICENSE
+README.md
+docker-compose.yml

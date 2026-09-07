@@ -1,0 +1,12 @@
+--find-links https://github.com/atOCEANO/embeddable-market-simulation-library/releases/expanded_assets/v1.2.0
+
+emsl[data,tune,sb3]==1.2.0
+exchange-router-client @ git+https://github.com/atOCEANO/exchange-router-service.git@v2.5.6#subdirectory=client
+
+# Library pins only. A notebook server is what these run in, so jupyterlab and
+# ipywidgets are installed alongside this file rather than from it.
+#
+# Gymnasium is a dependency of emsl rather than an extra, which is why it is
+# not listed. Torch is not listed either: the Dockerfile installs the CPU build
+# before this file is read, so resolving sb3 finds it already satisfied rather
+# than pulling the CUDA wheel from PyPI.
