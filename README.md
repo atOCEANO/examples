@@ -82,9 +82,9 @@ The four that simulate are ordered by how much of the decision you hand over, an
 | :--- | :--- |
 | [00-data.ipynb](00-data.ipynb) | The router by itself: writing a time window in Unix milliseconds, the raw JSON against the frame the SDK builds from it, the two places volume misleads you, and pulling a whole venue in one call. |
 | [01-backtest.ipynb](01-backtest.ipynb) | A `Strategy` class with `init`, `next` and a `marks()` method that keeps a legend from going stale, costs set deliberately, `decompose` to see which failure a loss was, and how to drive the chart rather than just draw it. |
-| [02-search.ipynb](02-search.ipynb) | `tune` over a parameter space, the distance between the best in-sample score and that same setting on bars no trial ever saw, and `walk_forward` refitting along the series to ask that question five times instead of once. |
+| [02-search.ipynb](02-search.ipynb) | `tune` over a parameter space, the distance between the best in-sample score and that same setting on bars no trial ever saw, and `walk_forward` refitting along the series to ask that question five times instead of once, with each window shaded on the chart and the parameters it chose carried underneath it. |
 | [03-rl.ipynb](03-rl.ipynb) | A vectorized Gymnasium env: your observation, your reward, your action decoding, per-environment cost draws, and the same-step autoreset that fails silently. Then PPO trained on it through the SB3 adapter, and measured against random on bars it never saw. |
-| [04-engine.ipynb](04-engine.ipynb) | The raw `reset` / `step` / `done` loop, and a trailing stop, which is the shape of rule that cannot be precomputed at any speed. |
+| [04-engine.ipynb](04-engine.ipynb) | The raw `reset` / `step` / `done` loop, and a trailing stop, which is the shape of rule that cannot be precomputed at any speed. Its chart carries the six settings that produced it, so the saved file explains itself. |
 
 Read `00` first. The other four assume it and carry only a short fetch.
 
