@@ -7,11 +7,11 @@
 </div>
 
 <sub>
-  <b>Introduction</b> &nbsp;•&nbsp; 
-  <a href="00-data.ipynb">The data</a> &nbsp;•&nbsp; 
-  <a href="01-backtest.ipynb">Backtest</a> &nbsp;•&nbsp; 
-  <a href="02-search.ipynb">Parameter search</a> &nbsp;•&nbsp; 
-  <a href="03-rl.ipynb">Reinforcement learning</a> &nbsp;•&nbsp; 
+  <b>Introduction</b> &nbsp;•&nbsp;
+  <a href="00-data.ipynb">The data</a> &nbsp;•&nbsp;
+  <a href="01-backtest.ipynb">Backtest</a> &nbsp;•&nbsp;
+  <a href="02-search.ipynb">Parameter search</a> &nbsp;•&nbsp;
+  <a href="03-rl.ipynb">Reinforcement learning</a> &nbsp;•&nbsp;
   <a href="04-engine.ipynb">Raw engine</a>
 </sub>
 
