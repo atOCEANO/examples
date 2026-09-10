@@ -10,8 +10,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends git && rm -rf /
 
 # Before requirements.txt, so resolving the sb3 extra finds torch already there.
 # The CPU index because the default wheel carries a CUDA runtime of several
-# gigabytes that nothing here can reach.
-RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch
+# gigabytes that nothing here can reach. Pinned for the same reason optuna is:
+# the committed notebook outputs were produced against this build, and a training
+# run that silently changed torch would move them with nothing on the page saying so.
+RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch==2.14.0+cpu
 
 # Not the workdir: compose mounts the repo over /work, shadowing anything there.
 COPY requirements.txt /tmp/requirements.txt
