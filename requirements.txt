@@ -2,7 +2,7 @@
 
 emsl[data,tune,sb3]==1.3.2
 optuna==5.0.0
-exchange-router-client @ git+https://github.com/atOCEANO/exchange-router-service.git@v2.5.6#subdirectory=client
+exchange-router-client @ git+https://github.com/atOCEANO/exchange-router-service.git@v2.5.7#subdirectory=client
 
 # Library pins only. A notebook server is what these run in, so jupyterlab and
 # ipywidgets are installed alongside this file rather than from it.
