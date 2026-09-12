@@ -1,1 +1,4 @@
+# Normalize all text to LF in the repository and on checkout, so a clone reads the
+# same on every platform rather than however the cloning machine is configured.
+# The notebooks are JSON, so a CRLF checkout would rewrite every line of every one.
 * text=auto eol=lf
