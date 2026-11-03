@@ -1,0 +1,50 @@
+# The site's look for every static figure: its ground, its ink at four strengths and four
+# dashes, paired so six lines stay apart, and JetBrains Mono.
+
+figure.facecolor: 070d13
+figure.edgecolor: 070d13
+figure.figsize: 10, 4.2
+figure.dpi: 144
+figure.constrained_layout.use: True
+savefig.facecolor: 070d13
+savefig.edgecolor: 070d13
+
+axes.facecolor: 070d13
+axes.edgecolor: ffffff2e
+axes.labelcolor: aab1bb
+axes.labelsize: 9
+axes.titlecolor: e9ebee
+axes.titlesize: 10.5
+axes.titlelocation: left
+axes.titlepad: 12
+axes.grid: True
+axes.axisbelow: True
+axes.spines.top: False
+axes.spines.right: False
+axes.prop_cycle: cycler("color", ["e9ebee", "aab1bb", "8a939e", "5f6874", "e9ebee", "aab1bb"]) + cycler("linestyle", ["-", "--", ":", "-.", ":", "-."])
+
+grid.color: ffffff1a
+grid.linewidth: 0.6
+
+lines.linewidth: 1.3
+lines.color: e9ebee
+patch.facecolor: aab1bb
+patch.edgecolor: 070d13
+
+text.color: e9ebee
+xtick.color: 8a939e
+ytick.color: 8a939e
+xtick.labelcolor: aab1bb
+ytick.labelcolor: aab1bb
+xtick.labelsize: 8.5
+ytick.labelsize: 8.5
+
+date.converter: concise
+
+legend.frameon: False
+legend.fontsize: 8.5
+legend.labelcolor: aab1bb
+
+font.family: monospace
+font.monospace: JetBrains Mono, DejaVu Sans Mono
+font.size: 9
