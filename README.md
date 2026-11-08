@@ -3,8 +3,8 @@
 
 <div style="padding-top: 0px;">
   <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.13+-blue.svg" alt="Python 3.13+" /></a>
-  <a href="https://github.com/atOCEANO/probatum/releases"><img src="https://img.shields.io/badge/probatum-2.0.0-2ea043.svg" alt="probatum 2.0.0" /></a>
-  <a href="https://github.com/atOCEANO/exchange-router/releases"><img src="https://img.shields.io/badge/exchange--router-3.0.1-2ea043.svg" alt="exchange-router 3.0.1" /></a>
+  <a href="https://github.com/atOCEANO/probatum/releases"><img src="https://img.shields.io/badge/probatum-3.0.0-2ea043.svg" alt="probatum 3.0.0" /></a>
+  <a href="https://github.com/atOCEANO/exchange-router/releases"><img src="https://img.shields.io/badge/exchange--router-3.3.0-2ea043.svg" alt="exchange-router 3.3.0" /></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
 </div>
 
@@ -50,7 +50,7 @@ Each notebook is short and stands on its own: a title, one cell of imports, then
 docker compose up
 ```
 
-JupyterLab starts on `http://127.0.0.1:8888` with no token to paste, its port bound to loopback alone. The image holds Python 3.13, probatum 2.0.0, exchange-router 3.0.1 and every library the notebooks import, each pinned, and runs on the CPU. This folder is mounted into the container, so a notebook run there writes back here; the image runs as uid 1000, so on a Linux host whose user has another uid the writes are refused.
+JupyterLab starts on `http://127.0.0.1:8888` with no token to paste, its port bound to loopback alone. The image holds Python 3.13, probatum 3.0.0, exchange-router 3.3.0 and every library the notebooks import, each pinned, and runs on the CPU. This folder is mounted into the container, so a notebook run there writes back here; the image runs as uid 1000, so on a Linux host whose user has another uid the writes are refused.
 
 `dev/run.sh` runs notebooks from top to bottom in place, writing over the outputs they hold, every one or those named:
 
@@ -72,7 +72,7 @@ Torch goes first, so that resolving stable-baselines3 finds it installed rather 
 
 ### Where the bars come from
 
-Each notebook fetches its bars through `exchange_router.Router.local`, which runs the exchanges' adapters inside the notebook, so no service has to be running. The exchanges' public APIs need no key, but Binance and Bybit refuse requests from some countries, the United States among them, and most notebooks read Binance.
+Each notebook fetches its bars through `exchange_router.Router.local`, which runs the exchanges' adapters inside the notebook, so no service has to be running. The exchanges' public APIs need no key, but Binance and Bybit refuse requests from some countries, the United States among them, and every notebook reads one of the two.
 
 The notebooks from `01-data/05` on save their bars into `bars/` with `Data.save` on the first run and load them from there later, refused where they no longer give the fingerprint they were saved under, a hash of every bar and instrument; `01-data/05` also keeps one outside series there as a parquet file. Their windows have closed, so a run anywhere fetches the same bars. The other data notebooks fetch what they show on every run: `01-data/01` a closed quarter of four-hour bars, which Hyperliquid, serving the last 5,000 candles of an interval, keeps for about two years; `01-data/02` to `04` the days before the run, since open interest, long/short ratios, liquidations, order books, trades and some funding exist only for recent weeks or as a snapshot, so their numbers move from one run to the next.
 
@@ -138,7 +138,7 @@ The ways a policy reaches the engine, an array, a table, a `Strategy` and a loop
 
 <div align="center">
   <img src=".Documentation/imgs/211103.png" alt="two panels: an account of one bitcoin held short and held long on an inverse contract, with the coin alone, its equity counted in bitcoin above and in dollars below" width="100%" />
-  <p style="margin: 0;"><i>An account of one bitcoin on Binance's coin-margined contract, held short and held long, in the coin and in dollars</i></p>
+  <p style="margin: 0;"><i>An account of one bitcoin on Bybit's coin-margined contract, held short and held long, in the coin and in dollars</i></p>
 </div>
 
 <br>
@@ -150,7 +150,7 @@ The ways a policy reaches the engine, an array, a table, a `Strategy` and a loop
 | [`03-long-short`](https://nbviewer.org/github/atOCEANO/examples/blob/main/03-strategies/03-long-short.ipynb) | Ten perpetuals ranked by their last month: long the strongest, short the weakest, the funding paid and received, the exposure and the margin. |
 | [`04-brackets`](https://nbviewer.org/github/atOCEANO/examples/blob/main/03-strategies/04-brackets.ipynb) | A `Strategy` that enters on a channel break either way, rests a stop and a take-profit for each entry, the first to fill cancelling the other, and trails the stop with `replace`, and one bracket's life from the order log. |
 | [`05-limit-orders`](https://nbviewer.org/github/atOCEANO/examples/blob/main/03-strategies/05-limit-orders.ipynb) | A `Strategy` that rests limits at a band and moves them every close: maker fills, the order log, and a fill and an order told by `explain()`. |
-| [`06-a-loop-of-your-own`](https://nbviewer.org/github/atOCEANO/examples/blob/main/03-strategies/06-a-loop-of-your-own.ipynb) | Two `Engine`s stepped together at Binance and Bybit, short where the funding is higher and long where it is lower, then `combine` into one book. |
+| [`06-a-loop-of-your-own`](https://nbviewer.org/github/atOCEANO/examples/blob/main/03-strategies/06-a-loop-of-your-own.ipynb) | Two `Engine`s stepped together on Bybit's Bitcoin perpetuals in USDT and in USDC, short where the funding is higher and long where it is lower, then `combine` into one book. |
 | [`07-funding-carry`](https://nbviewer.org/github/atOCEANO/examples/blob/main/03-strategies/07-funding-carry.ipynb) | Spot and perpetual in one account: long the coin, short the perpetual, cash moved between the two wallets, and the funding received. |
 | [`08-coin-margined`](https://nbviewer.org/github/atOCEANO/examples/blob/main/03-strategies/08-coin-margined.ipynb) | An inverse perpetual: an account counted in bitcoin, held short and held long, its equity in the coin and in dollars. |
 
