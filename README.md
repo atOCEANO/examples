@@ -3,8 +3,8 @@
 
 <div style="padding-top: 0px;">
   <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.13+-blue.svg" alt="Python 3.13+" /></a>
-  <a href="https://github.com/atOCEANO/probatum/releases"><img src="https://img.shields.io/badge/probatum-3.0.0-2ea043.svg" alt="probatum 3.0.0" /></a>
-  <a href="https://github.com/atOCEANO/exchange-router/releases"><img src="https://img.shields.io/badge/exchange--router-3.3.0-2ea043.svg" alt="exchange-router 3.3.0" /></a>
+  <a href="https://github.com/atOCEANO/probatum/releases"><img src="https://img.shields.io/badge/probatum-4.0.0-2ea043.svg" alt="probatum 4.0.0" /></a>
+  <a href="https://github.com/atOCEANO/exchange-router/releases"><img src="https://img.shields.io/badge/exchange--router-4.0.0-2ea043.svg" alt="exchange-router 4.0.0" /></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
 </div>
 
@@ -50,7 +50,7 @@ Each notebook is short and stands on its own: a title, one cell of imports, then
 docker compose up
 ```
 
-JupyterLab starts on `http://127.0.0.1:8888` with no token to paste, its port bound to loopback alone. The image holds Python 3.13, probatum 3.0.0, exchange-router 3.3.0 and every library the notebooks import, each pinned, and runs on the CPU. This folder is mounted into the container, so a notebook run there writes back here; the image runs as uid 1000, so on a Linux host whose user has another uid the writes are refused.
+JupyterLab starts on `http://127.0.0.1:8888` with no token to paste, its port bound to loopback alone. The image holds Python 3.13, probatum 4.0.0, exchange-router 4.0.0 and every library the notebooks import, each pinned, and runs on the CPU. This folder is mounted into the container, so a notebook run there writes back here; the image runs as uid 1000, so on a Linux host whose user has another uid the writes are refused.
 
 `dev/run.sh` runs notebooks from top to bottom in place, writing over the outputs they hold, every one or those named:
 
